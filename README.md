@@ -16,13 +16,13 @@ mix phoenix.server
 
 - port that listens to requests is `8080`
 
- ###GET api/request?connId=19&timeout=60###
+ **GET api/request?connId=19&timeout=60**
   returns the following response after timeout
 
-  ####request####
+
     GET `http://127.0.0.1:8080/api/request?connId=19&timeout=6`
 
-  ####response####
+ response -
 
   ```json
   {
@@ -30,27 +30,26 @@ mix phoenix.server
   }
   ```
 
- ###GET api/serverStatus###
+ **GET api/serverStatus**
   displays all the connections with their timeout time
-
-  ###request####
+  
     GET `http://127.0.0.1:8080/api/serverStatus`
-
-  ###response####
+    
+    response - 
     ```json
       {
       "19": 4.18
       }
     ```
 
- ###PUT api/kill###
+ **PUT api/kill**
   takes in connid in payload and kills the process if running
 
-  ####request####
     PUT `http://127.0.0.1:8080/api/kill`
     body: `{"connId": 9}`
 
-  ####respnse####
+  response -
+  
     ```json
       {
       "status": "killed"
