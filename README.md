@@ -33,25 +33,26 @@ mix phoenix.server
  **GET api/serverStatus**
   displays all the connections with their timeout time
   
-    GET `http://127.0.0.1:8080/api/serverStatus`
+  GET `http://127.0.0.1:8080/api/serverStatus`
     
-    response - 
-    ```json
-      {
-      "19": 4.18
-      }
-    ```
+  response - 
+    
+  ```json
+  {
+    "19": 4.18
+  }
+  ```
 
  **PUT api/kill**
   takes in connid in payload and kills the process if running
 
-    PUT `http://127.0.0.1:8080/api/kill`
-    body: `{"connId": 9}`
+  PUT `http://127.0.0.1:8080/api/kill`
+  body: `{"connId": 9}`
 
   response -
   
-    ```json
-      {
-      "status": "killed"
-    }
-    ```
+  ```json
+   {
+    "status": "killed"
+  }
+  ```
