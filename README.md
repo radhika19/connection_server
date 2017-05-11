@@ -1,20 +1,58 @@
 # Connectionserver
 
-To start your Phoenix app:
+- used :gen_tcp to process requests
+- Erlang Term Storage - ETS for storing the pids and timer refs
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  * Install Node.js dependencies with `npm install`
-  * Start Phoenix endpoint with `mix phoenix.server`
+**SETUP**
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+```
+git clone https://github.com/radhika19/connection_server.git
+cd connection_server
+mix deps.get
+mix phoenix.server
+```
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
+**API**
 
-## Learn more
+- port that listens to requests is `8080`
 
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+ ###GET api/request?connId=19&timeout=60###
+  returns the following response after timeout
+
+  ####request####
+    GET `http://127.0.0.1:8080/api/request?connId=19&timeout=6`
+
+  ####response####
+
+  ```json
+  {
+  "status": "ok"
+  }
+  ```
+
+ ###GET api/serverStatus###
+  displays all the connections with their timeout time
+
+  ###request####
+    GET `http://127.0.0.1:8080/api/serverStatus`
+
+  ###response####
+    ```json
+      {
+      "19": 4.18
+      }
+    ```
+
+ ###PUT api/kill###
+  takes in connid in payload and kills the process if running
+
+  ####request####
+    PUT `http://127.0.0.1:8080/api/kill`
+    body: `{"connId": 9}`
+
+  ####respnse####
+    ```json
+      {
+      "status": "killed"
+    }
+    ```
